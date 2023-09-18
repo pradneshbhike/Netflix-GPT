@@ -1,11 +1,9 @@
 import Browse from "./Browse";
-import Header from "./Header";
 import Login from "./Login";
 import {
     createBrowserRouter,
     RouterProvider,
   } from "react-router-dom";
-
 
 const appRouter = createBrowserRouter([
     {
@@ -19,6 +17,7 @@ const appRouter = createBrowserRouter([
 ])
 
 const Body = () => {
+
     return(
         <RouterProvider router={appRouter} />
     )
