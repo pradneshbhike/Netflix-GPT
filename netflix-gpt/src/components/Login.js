@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { checkValidData } from "../utils/validate";
 import { auth, provider } from "../utils/firebase";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import Header from "./Header";
 import { BG_IMG } from "../utils/constant";
 const Login = () => {
@@ -18,6 +18,7 @@ const Login = () => {
         const message = checkValidData(email.current.value,password.current.value);
         setErrorMessage(message);
 
+        if(!message) 
         if(isSignUp){
             // console.log("sign up page")
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
@@ -29,7 +30,20 @@ const Login = () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(message + " " + errorCode + " " + errorMessage)
+                setErrorMessage( errorCode + " " + errorMessage)
+            });
+        }
+        else{
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage( errorCode + " " + errorMessage)
             });
         }
     }
@@ -56,7 +70,14 @@ const Login = () => {
                     { errorMessage ? <p className="text-red-600">{errorMessage}</p> : "" }
                     <button className="p-2 m-2 w-full bg-red-700 rounded-lg" onClick={handleSubmitForm}>{isSignUp ? "Create Account" : "Log In"}</button>
                     <h2 className="p-4 hover:cursor-pointer" onClick={toggleSignUp}> {isSignUp ? "Already a user? sign in now" : "New to netflix? sign up now"}</h2>
-                    <button className="p-2 m-2 w-full bg-red-700 rounded-lg" onClick={handleGoogleSignIn}>SignIn with Google</button>
+                    <button className="p-2 m-2 w-full bg-white rounded-lg text-black flex" onClick={handleGoogleSignIn}>
+                        {/* <div> */}
+                        <img className="w-7 mr-4 ml-5" tab="google-logo" src="https://developers.google.com/identity/images/g-logo.png"/>
+                        {/* </div> */}
+                        {/* <div> */}
+                        Continue with Google
+                        {/* </div> */}
+                    </button>
                 </form>
         </div>
     )

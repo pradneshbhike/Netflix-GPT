@@ -1,14 +1,22 @@
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO } from "../utils/constant";
+import { toggleGPT } from "../utils/gptSlice";
+import {langs} from "../utils/languageConstant";
+import {selectedLang} from "../utils/langConfigSlice"
 const Header = () => {
     // const navigate = useNavigate();
 
+    // console.log("langs->",langs);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const user = useSelector((store) => store.user);
     const handleSignOut = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
@@ -20,8 +28,14 @@ const Header = () => {
           });
     }
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const handleToggleSearch = () => {
+      dispatch(toggleGPT());
+    }
+
+    const handleLanguage = (e) => {
+      dispatch(selectedLang(e.target.value));
+    }
+    
 
     useEffect(() =>{
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -49,8 +63,19 @@ const Header = () => {
             alt="logo" />
             </div>
             <div>
-            <button className="p-2 m-2 bg-red-700 rounded-lg text-white" onClick={handleSignOut} > Sign Out
-             </button>
+            <select onChange={handleLanguage}>
+              {langs.map((lang) =>  <option key={lang.identifier} value={lang.identifier}>{lang.identifier}</option> )}
+                {/* <option>English</option>
+                <option>Hindi</option>
+                <option>Marathi</option>
+                <option>German</option> */}
+              </select>
+              {user && 
+             <button className="p-2 m-2 bg-green-500 rounded-lg text-white" onClick={handleToggleSearch} > GPT Search
+             </button>}
+             {user && 
+             <button className="p-2 m-2 bg-red-700 rounded-lg text-white" onClick={handleSignOut} > Sign Out
+             </button> } 
             </div>
         </div>
     )

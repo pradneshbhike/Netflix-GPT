@@ -20,3 +20,26 @@ export const API_OPTIONS = {
   export const top_rated_movies_endpoint = "https://api.themoviedb.org/3/movie/top_rated";
 
   export const upcoming_movies_endpoint = "https://api.themoviedb.org/3/movie/upcoming";
+
+
+  export const languagesAvailable = {
+    English:{  
+        search: "search",
+        gptSearchPlaceholder: "what would you like to watch today?"
+    },
+    Hindi:{
+        search: "खोज",
+        gptSearchPlaceholder: "आज आप क्या देखना चाहेंगे?"
+    },
+    Marathi:{
+        search: "शोध",
+        gptSearchPlaceholder: "तुम्हाला आज काय बघायला आवडेल?"
+    },
+    German:{
+        search: "suchen",
+        gptSearchPlaceholder: "Was möchtest du heute sehen?"
+    }
+  }
+
+
+  export const OPEN_API_KEY = "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"
