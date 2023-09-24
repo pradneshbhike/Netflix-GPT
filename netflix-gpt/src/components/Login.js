@@ -59,24 +59,20 @@ const Login = () => {
         <div>
             <Header/>
             <div className="absolute">
-                <img src={BG_IMG}
+                <img className="h-screen w-screen object-cover" src={BG_IMG}
                 alt="imgBg"/>
             </div> 
-                <form onSubmit={(e) => e.preventDefault()} className="w-3/12 absolute p-12 bg-black my-36 mx-auto left-0 right-0 text-white bg-opacity-80">
+                <form onSubmit={(e) => e.preventDefault()} className=" w-3/4 md:w-3/12 absolute p-12 bg-black my-36 mx-auto left-0 right-0 text-white bg-opacity-80">
                     <h1 className="font-bold text-3xl py-4">{ isSignUp ? "Sign Up" : "Sign In"}</h1>
                     { isSignUp && <input type="text" placeholder="Full name" className="p-2 m-2 w-full rounded-lg bg-gray-700"></input>}
                     <input ref={email} type="text" placeholder="Email address" className="p-2 m-2 w-full rounded-lg bg-gray-700"></input>
                     <input ref={password} type="password" placeholder="Password" className="p-2 m-2 w-full  rounded-lg bg-gray-700"></input>
                     { errorMessage ? <p className="text-red-600">{errorMessage}</p> : "" }
                     <button className="p-2 m-2 w-full bg-red-700 rounded-lg" onClick={handleSubmitForm}>{isSignUp ? "Create Account" : "Log In"}</button>
-                    <h2 className="p-4 hover:cursor-pointer" onClick={toggleSignUp}> {isSignUp ? "Already a user? sign in now" : "New to netflix? sign up now"}</h2>
-                    <button className="p-2 m-2 w-full bg-white rounded-lg text-black flex" onClick={handleGoogleSignIn}>
-                        {/* <div> */}
-                        <img className="w-7 mr-4 ml-5" tab="google-logo" src="https://developers.google.com/identity/images/g-logo.png"/>
-                        {/* </div> */}
-                        {/* <div> */}
-                        Continue with Google
-                        {/* </div> */}
+                    <h2 className="md:p-4 hover:cursor-pointer" onClick={toggleSignUp}> {isSignUp ? "Already a user? sign in now" : "New to netflix? sign up now"}</h2>
+                    <button className="justify-center p-2 w-full bg-white rounded-lg text-black flex" onClick={handleGoogleSignIn}>
+                        <img className="w-5 mr-4 ml-5" tab="google-logo" src="https://developers.google.com/identity/images/g-logo.png"/>
+                        Google SignIn
                     </button>
                 </form>
         </div>

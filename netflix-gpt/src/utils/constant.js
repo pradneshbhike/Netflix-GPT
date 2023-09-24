@@ -42,4 +42,4 @@ export const API_OPTIONS = {
   }
 
 
-  export const OPEN_API_KEY = process.env.REACT_APP_OPEN_AI_API_KEY
+  export const OPEN_API_KEY = process.env.REACT_APP_OPEN_AI_API_SECRET_KEY

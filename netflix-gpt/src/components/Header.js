@@ -15,6 +15,8 @@ const Header = () => {
     // console.log("langs->",langs);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
+    const pageSelected = useSelector((store) => store.gpt.gptEnable);
 
     const user = useSelector((store) => store.user);
     const handleSignOut = () => {
@@ -45,7 +47,7 @@ const Header = () => {
                 dispatch(addUser({uid: uid,email: email,displayName: displayName}));
                 navigate("/browse");
             } else {
-              console.log("log out");
+              // console.log("log out");
               dispatch(removeUser());
               navigate("/");
             }
@@ -56,22 +58,18 @@ const Header = () => {
 
 
     return(
-        <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen flex justify-between">
+        <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen flex flex-col md:flex-row justify-between">
             <div>
             <img className="w-44" 
             src={LOGO}
             alt="logo" />
             </div>
             <div>
-            <select onChange={handleLanguage}>
+            {pageSelected && <select onChange={handleLanguage}>
               {langs.map((lang) =>  <option key={lang.identifier} value={lang.identifier}>{lang.identifier}</option> )}
-                {/* <option>English</option>
-                <option>Hindi</option>
-                <option>Marathi</option>
-                <option>German</option> */}
-              </select>
+              </select> }
               {user && 
-             <button className="p-2 m-2 bg-green-500 rounded-lg text-white" onClick={handleToggleSearch} > GPT Search
+             <button className="p-2 m-2 bg-green-500 rounded-lg text-white" onClick={handleToggleSearch} > {pageSelected ? "Home Page" :  "GPT Search"}
              </button>}
              {user && 
              <button className="p-2 m-2 bg-red-700 rounded-lg text-white" onClick={handleSignOut} > Sign Out

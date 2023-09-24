@@ -45,8 +45,8 @@ const GPTSearchBar = () => {
 
     // console.log(language);
     return(
-        <div className="pt-[10%] flex justify-center">
-            <form className="w-1/2 bg-black grid grid-cols-12" onSubmit={(e) => e.preventDefault()}>
+        <div className=" pt-[50%] md:pt-[10%] flex justify-center">
+            <form className=" w-screen md:w-1/2 bg-black grid grid-cols-12" onSubmit={(e) => e.preventDefault()}>
             <input type="text" placeholder={languagesAvailable[language].gptSearchPlaceholder} className="p-2 m-2 rounded-lg bg-white col-span-9" ref={searchText}></input>
             <button className="p-2 m-2 text-white bg-red-700 rounded-lg col-span-3" onClick={handleSubmit}>{languagesAvailable[language].search}</button>
             </form>
