@@ -46,12 +46,12 @@ Follow these steps to run the project locally:
 
 - Clone this repository to your local machine:
 ```sh
-git clone https://github.com/yourusername/netflix-clone.git
+git clone https://github.com/pradneshbhike/Netflix-GPT.git
 ```
 
 - Install project dependencies:
 ```sh
-cd netflix-clone
+cd netflix-gpt
 npm install
 ```
 - Start the development server:
