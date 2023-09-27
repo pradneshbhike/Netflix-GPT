@@ -1,4 +1,5 @@
 **Netflix Clone with GPT Search**
+
 This project is a Netflix clone with additional features, including a GPT-powered search bar. It allows users to sign up, log in, browse movies, and search for movies using natural language queries.
 
 # Table of Contents
