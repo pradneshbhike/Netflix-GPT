@@ -1,8 +1,8 @@
-**Netflix Clone with GPT Search**
+# Netflix Clone with GPT Search
 
 This project is a Netflix clone with additional features, including a GPT-powered search bar. It allows users to sign up, log in, browse movies, and search for movies using natural language queries.
 
-# Table of Contents
+**Table of Contents**
 1. Features
 2. Project Setup
 3. Getting Started
@@ -10,7 +10,7 @@ This project is a Netflix clone with additional features, including a GPT-powere
 4. Usage
 6. Contributing
 
-# Features
+**Features**
 
 1. Authentication
 - Sign up and log in functionality using Firebase authentication.
@@ -30,18 +30,18 @@ This project is a Netflix clone with additional features, including a GPT-powere
 - GPT-powered search bar for natural language movie queries.
 - Multi-language support.
 
-# Project Setup
+**Project Setup**
 Before starting the project, make sure to create a .env file in the root directory and add your TMDB and OpenAI API keys.
 
 Example .env file:
 
-# env
+**env**
 Copy code
 REACT_APP_TMDB_API_KEY=your_tmdb_api_key_here
 REACT_APP_OPENAI_API_KEY=your_openai_api_key_here
 Save to grepper
 
-# Getting Started
+**Getting Started**
 Follow these steps to run the project locally:
 
 - Clone this repository to your local machine:
@@ -60,21 +60,18 @@ npm start
 ```
 - Open your browser and navigate to http://localhost:3000 to view the application.
 
-# Configuration
+**Configuration**
 To configure the project, you can update the following files:
 
 - Firebase configuration: Modify the Firebase setup in the Firebase.js file.
 - Tailwind CSS: Customize the styles in the tailwind.config.js file.
 - GPT Search API: Update the OpenAI API key in the .env file.
 
-# Usage
+**Usage**
 - Sign up for an account or log in using the provided forms.
 - Browse and watch movies from the main page.
 - Use the GPT-powered search bar to search for movies.
 - Update your profile by clicking on your profile picture.
 
-# Contributing
+**Contributing**
 - Contributions are welcome! Please fork this repository, make your changes, and submit a pull request.
-
-# Project Setup
-- Before starting the project please add .env file and add TMDB and OPENAI KEY into it.
